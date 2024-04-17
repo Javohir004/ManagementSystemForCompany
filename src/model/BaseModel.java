@@ -30,4 +30,5 @@ public class BaseModel {
     public Boolean getActive() {
         return isActive;
     }
+
 }
