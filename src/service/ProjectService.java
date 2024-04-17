@@ -4,6 +4,7 @@ import Repository.ProjectRepository;
 import model.Project;
 
 public class ProjectService extends BaseService <Project , ProjectRepository> {
+
     public ProjectService(ProjectRepository repository) {
         super(repository);
     }

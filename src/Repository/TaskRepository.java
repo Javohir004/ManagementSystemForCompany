@@ -1,5 +1,8 @@
 package Repository;
 
-public class TaskRepository  extends BaseRepository{
+import model.Task;
+
+public class TaskRepository  extends BaseRepository<Task>{
+
 
 }
