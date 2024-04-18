@@ -48,17 +48,6 @@ public class UserController {
         mainMenuUser();
     }
 
-    public static void showUsers(ArrayList<User> users) {
-        int i = 1;
-        for (User user : users) {
-            if (user != currentUser) {
-                System.out.println(i++ + ". " + user.toString());
-            }
-        }
-        System.out.print("Choose one: ");
-        i = scanNum.nextInt() - 1;
-        User user = users.get(i);
-    }
 
     public static void addAdmin(){
 
@@ -79,9 +68,34 @@ public class UserController {
         }
 
 
-        public static void removeAdmin(){
 
+        public static void removeAdmin(){
+       ArrayList<User>userlist = showAdmin();
+
+            System.out.println("Choose the index : ");
+            int index = scanNum.nextInt()-1;
+
+            if(index < 0 || index >= userlist.size()){
+                System.out.println("Something went wrong !!!");
+                return;
+            }
+
+            User user = userlist.get(index);
+            userService.delete(user.getId());
+            System.out.println("Successfully deleted !!!");
         }
+
+
+        public static ArrayList<User> showAdmin(){
+            ArrayList<User>admins = userService.getUsersByRole(UserRole.ADMIN);
+            int i=0;
+            for (User admin : admins) {
+                System.out.println(++i + " - " + admin.getUsername());
+            }
+            return admins;
+        }
+
+
 
 }
 
