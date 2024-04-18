@@ -1,11 +1,15 @@
 package Repository;
 
+import Enomerator.UserActivity;
+import Enomerator.UserRole;
 import model.User;
 
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-public class UserRepository extends BaseRepository <User> {
+public class UserRepository extends BaseRepository<User> {
 
 
     public Optional<User> findById(UUID id) {
@@ -15,13 +19,33 @@ public class UserRepository extends BaseRepository <User> {
         return Optional.empty();
     }
 
-    public User findByUsername(String username) {
+    public Optional<User> findByUsername(String username) {
         for (User user : data) {
-            if(user.getUsername().equals(username)) {
-                return user;
+            if (user.getUsername().equals(username)) {
+                return Optional.of(user);
             }
         }
-        return null;
+        return Optional.empty();
+    }
+
+    public void changeActivity(UserActivity userActivity, UUID id) {
+        for (User user : data) {
+            if (Objects.equals(user.getId(), id)) {
+                user.setUserActivity(userActivity);
+                return;
+            }
+        }
+    }
+
+    public ArrayList<User> getManagers(UserActivity userActivity) {
+        ArrayList<User> getManagers = new ArrayList<>();
+        for (User user : data) {
+            if (Objects.equals(user.getRole(), UserRole.MANAGER) &&
+                    Objects.equals(user.getUserActivity(), userActivity)) {
+                    getManagers.add(user);
+            }
+        }
+        return getManagers;
     }
 
 }
