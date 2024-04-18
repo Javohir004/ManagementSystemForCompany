@@ -18,6 +18,21 @@ public class User extends BaseModel {
         this.userActivity = userActivity;
     }
 
+    public User(String username, String lastname, String password, UserRole role) {
+        this.username = username;
+        this.lastname = lastname;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(String username, String lastname, String password, UserRole role, UUID projectId) {
+        this.username = username;
+        this.lastname = lastname;
+        this.password = password;
+        this.role = role;
+        this.projectId = projectId;
+    }
+
     public User() {
         this.username = username;
         this.lastname = lastname;
