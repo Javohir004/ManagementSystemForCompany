@@ -53,7 +53,7 @@ public class UserController {
 
     public static void addAdmin(){
 
-        System.out.println("Enter name : ");
+        System.out.print("Enter name : ");
         String name = scanStr.nextLine();
 
         System.out.print("Enter username: ");

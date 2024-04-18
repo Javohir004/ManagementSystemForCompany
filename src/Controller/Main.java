@@ -13,8 +13,7 @@ import service.UserService;
 
 import java.util.Scanner;
 
-import static Controller.UserController.addAdmin;
-import static Controller.UserController.removeAdmin;
+import static Controller.UserController.*;
 
 public class Main {
 
@@ -60,7 +59,7 @@ public class Main {
 
     public static void superAdminMenu(){
         while (true) {
-            System.out.println("1. Add A\t2. Remove A\t3.Show A\t4.All projects\t0. Exit");
+            System.out.println("1.Add A\t2.Remove A\t3.Show A\t4.All projects\t0. Exit");
             String command = scanStr.nextLine();
 
             switch (command) {
@@ -69,6 +68,10 @@ public class Main {
                 }
                 case "2" -> {
                     removeAdmin();
+                }case "3" ->{
+                    showAdmin();
+                }case "4" ->{
+                    showAllpreject();
                 }
                 case "0" -> {
                     System.out.println("thank you for choosing us\n\n");
@@ -98,6 +101,7 @@ public class Main {
 
 
     private static void userRole() {
+        userService.add(new User("super", "super", "super" , UserRole.SUPER_ADMIN));
         userService.add(new User("admin", "admin", "admin" , UserRole.ADMIN));
         userService.add(new User("manager", "manager", "manager" , UserRole.MANAGER));
         userService.add(new User("tester", "tester", "tester" , UserRole.TESTER));
