@@ -1,7 +1,10 @@
 package service;
 
+import Enomerator.UserRole;
 import Repository.UserRepository;
 import model.User;
+
+import java.util.ArrayList;
 
 public class UserService extends BaseService<User, UserRepository>{
 
@@ -27,4 +30,17 @@ public class UserService extends BaseService<User, UserRepository>{
     public boolean check(User user) {
         return false;
     }
+
+
+    /** only for Super admin to get admins, and for Admin to get managers **/
+    public ArrayList<User> getUsersByRole(UserRole role){
+        ArrayList<User>userlist = repository.getUsersByRole(role);
+        return userlist;
+    }
+
+
+    /**this is for manager**/
+//    public ArrayList<User> getUsersByRole(UserRole role, ){
+//        ArrayList
+//    }
 }

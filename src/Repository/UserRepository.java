@@ -1,7 +1,9 @@
 package Repository;
 
+import Enomerator.UserRole;
 import model.User;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,5 +25,18 @@ public class UserRepository extends BaseRepository <User> {
         }
         return null;
     }
+
+
+    public ArrayList<User> getUsersByRole(UserRole role){
+        ArrayList<User>userrole = new ArrayList<>();
+        for (User datum : data) {
+            if(datum.getRole().equals(role) && datum.isActive()){
+                userrole.add(datum);
+            }
+        }
+        return userrole;
+    }
+
+
 
 }

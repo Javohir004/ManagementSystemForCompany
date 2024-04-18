@@ -22,6 +22,10 @@ public abstract class BaseService <T extends BaseModel, R extends BaseRepository
         return 1;
     }
 
+    public void delete(UUID id){
+        repository.delete(id);
+    }
+
     public Optional<T> findById(UUID id) {
         return repository.findById(id);
     }

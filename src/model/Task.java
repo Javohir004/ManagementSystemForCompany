@@ -9,6 +9,8 @@ public class Task extends BaseModel {
  private TaskStatus taskStatus;
  private UUID assignTask;
 
+
+
     public Task(String taskname, TaskStatus taskStatus, UUID assignTask) {
         this.taskname = taskname;
         this.taskStatus = taskStatus;

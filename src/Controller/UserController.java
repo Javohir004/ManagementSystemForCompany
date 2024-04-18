@@ -19,7 +19,7 @@ public class UserController {
         System.out.print("Enter password: ");
         String password = scanStr.nextLine();
 
-        if (userService.add(new User(name, username, password , UserRole.ADMIN)) == 1) {
+        if (userService.add(new User(name, username, password , UserRole.TESTER)) == 1) {
             System.out.println("- User successfully added!");
         } else {
             System.err.println("- Wrong username or password!");
@@ -39,6 +39,10 @@ public class UserController {
             return;
         }
 
+        if(currentUser.getRole().equals(UserRole.SUPER_ADMIN)){
+            superAdminMenu();
+        }
+
         System.out.println("Welcome " + currentUser.getUsername().toUpperCase() + "!\n\n");
 
         mainMenuUser();
@@ -56,6 +60,28 @@ public class UserController {
         User user = users.get(i);
     }
 
+    public static void addAdmin(){
+
+        System.out.println("Enter name : ");
+        String name = scanStr.nextLine();
+
+        System.out.print("Enter username: ");
+        String username = scanStr.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanStr.nextLine();
+
+        if (userService.add(new User(name, username, password , UserRole.ADMIN)) == 1) {
+            System.out.println("New admin added !!!");
+        }else {
+            System.out.println("This admin already exist !!!");
+        }
+        }
+
+
+        public static void removeAdmin(){
+
+        }
 
 }
 
