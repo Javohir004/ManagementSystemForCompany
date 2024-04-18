@@ -1,6 +1,7 @@
 package service;
 
 import Repository.TaskRepository;
+import model.Project;
 import model.Task;
 
 public class TaskService extends BaseService<Task , TaskRepository>{
@@ -16,6 +17,7 @@ public class TaskService extends BaseService<Task , TaskRepository>{
 
     @Override
     public boolean check(Task task) {
-        return false;
+        Task taskInDb = repository.findByTaskname(task.getTaskname());
+        return  taskInDb != null && taskInDb.getActive();
     }
 }
