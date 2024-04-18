@@ -22,11 +22,6 @@ public class UserService extends BaseService<User, UserRepository>{
     }
 
     @Override
-    public User mapNullFields(User original, User update) {
-        return null;
-    }
-
-    @Override
     public boolean check(User user) {
         User userInDb = repository.findByUsername(user.getUsername());
         return  userInDb != null && userInDb.getActive();

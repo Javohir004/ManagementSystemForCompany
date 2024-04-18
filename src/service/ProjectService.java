@@ -11,10 +11,7 @@ public class ProjectService extends BaseService <Project , ProjectRepository> {
         super(repository);
     }
 
-    @Override
-    public Project mapNullFields(Project original, Project update) {
-        return null;
-    }
+
 
     @Override
     public boolean check(Project project) {

@@ -1,10 +1,12 @@
 package service;
 
+import Enomerator.DataNotFoundException;
 import Repository.BaseRepository;
 import model.BaseModel;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 public abstract class BaseService <T extends BaseModel, R extends BaseRepository<T>>{
 
@@ -33,10 +35,13 @@ public abstract class BaseService <T extends BaseModel, R extends BaseRepository
     }
 
     public T findById(UUID id) {
-        return repository.findById(id).;
+        return repository.findById(id).orElseThrow(new Supplier<DataNotFoundException>() {
+            @Override
+            public DataNotFoundException get() {
+                return new DataNotFoundException("data not found");
+            }
+        });
     }
-
-    public abstract T mapNullFields(T original, T update);
 
     public abstract boolean check(T t);
 

@@ -9,11 +9,6 @@ public class BlockService extends BaseService <Block , BlockRepositroy> {
     }
 
     @Override
-    public Block mapNullFields(Block original, Block update) {
-        return null;
-    }
-
-    @Override
     public boolean check(Block block) {
         return false;
     }
