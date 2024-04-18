@@ -95,7 +95,9 @@ public class UserController {
             return admins;
         }
 
+    public static void showAllpreject(){
 
+    }
 
 }
 

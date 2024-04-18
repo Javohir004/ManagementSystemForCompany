@@ -28,7 +28,8 @@ public class UserService extends BaseService<User, UserRepository>{
 
     @Override
     public boolean check(User user) {
-        return false;
+        User userInDb = repository.findByUsername(user.getUsername());
+        return  userInDb != null && userInDb.getActive();
     }
 
 
