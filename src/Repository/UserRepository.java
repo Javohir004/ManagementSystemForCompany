@@ -40,5 +40,14 @@ public class UserRepository extends BaseRepository<User> {
         return userrole;
     }
 
+    public ArrayList<User> showBlocked(UserRole role){
+        ArrayList<User> userrole = new ArrayList<>();
+        for (User datum : data) {
+            if (datum.getRole().equals(role) && !datum.isActive()) {
+                userrole.add(datum);
+            }
+        }
+        return userrole;
+    }
 
 }

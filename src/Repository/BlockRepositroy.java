@@ -8,10 +8,16 @@ public class BlockRepositroy extends BaseRepository <Block> {
         if (check(block)) {
             return -1;
         }
-        /// block.setId(UUID.randomUUID());
+
         data.add(block);
+        findById(block.getBlocked()).get().setActive(false);
         block.setActive(false);
 
+        return 1;
+    }
+
+    public Integer unblockBlock(Block block){
+        findById(block.getBlocked()).get().setActive(true);
         return 1;
     }
 

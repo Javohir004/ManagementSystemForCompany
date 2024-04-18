@@ -27,13 +27,6 @@ public class User extends BaseModel {
         this.projectId = projectId;
     }
 
-    public User() {
-        this.username = username;
-        this.lastname = lastname;
-        this.password = password;
-        this.role = role;
-        this.projectId = projectId;
-    }
 
     public String getUsername() {
         return username;

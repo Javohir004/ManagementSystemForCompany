@@ -2,6 +2,7 @@ package service;
 
 import Repository.BlockRepositroy;
 import model.Block;
+import model.User;
 
 public class BlockService extends BaseService <Block , BlockRepositroy> {
     public BlockService(BlockRepositroy repository) {
@@ -10,6 +11,16 @@ public class BlockService extends BaseService <Block , BlockRepositroy> {
 
     @Override
     public boolean check(Block block) {
-        return false;
+        return block.getActive();
     }
+
+    public Integer block(Block block){
+      return repository.addBlock(block);
+    }
+
+    public Integer unblock(Block block){
+        return  repository.unblockBlock(block);
+    }
+
+
 }

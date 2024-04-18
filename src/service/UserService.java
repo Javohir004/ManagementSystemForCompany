@@ -39,4 +39,10 @@ public class UserService extends BaseService<User, UserRepository>{
 //    public ArrayList<User> getUsersByRole(UserRole role, ){
 //        ArrayList
 //    }
+
+    public ArrayList<User> getBlockedUser(UserRole role){
+        ArrayList<User>userlist = repository.showBlocked(role);
+        return userlist;
+    }
+
 }

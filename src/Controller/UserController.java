@@ -45,9 +45,12 @@ public class UserController {
             superAdminMenu();
         }
 
-        System.out.println("Welcome " + currentUser.getUsername().toUpperCase() + "!\n\n");
 
-        mainMenuUser();
+        if(currentUser.getRole().equals(UserRole.ADMIN)){
+            adminMenu();
+        }
+
+        System.out.println("Welcome " + currentUser.getUsername().toUpperCase() + "!\n\n");
     }
 
 
@@ -67,7 +70,7 @@ public class UserController {
         }else {
             System.out.println("This admin already exist !!!");
         }
-        }
+    }
 
 
 

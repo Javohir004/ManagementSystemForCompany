@@ -13,6 +13,7 @@ import service.UserService;
 
 import java.util.Scanner;
 
+import static Controller.AdminController.*;
 import static Controller.UserController.*;
 
 public class Main {
@@ -86,7 +87,33 @@ public class Main {
 
 
 
-  public static void  mainMenuUser(){
+  public static void  adminMenu(){
+      while (true) {
+          System.out.println("1.Stop A\t2.Restart manager\t3.Show projects\t4.Add manager\t5.Remove manager\t0. Exit");
+          String command = scanStr.nextLine();
+
+          switch (command) {
+              case "1" -> {
+                  stopManager();
+              }
+              case "2" -> {
+                   restartManager();
+              }case "3" ->{
+                  showAdmin();
+              }case "4" ->{
+                  addManager();
+              }case "5" ->{
+                  removeManager();
+              }
+              case "0" -> {
+                  System.out.println("thank you for choosing us\n\n");
+                  return;
+              }
+              default -> {
+                  System.out.println("Sorry?!");
+              }
+          }
+      }
 
   }
 
