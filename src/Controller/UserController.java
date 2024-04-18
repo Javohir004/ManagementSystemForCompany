@@ -97,14 +97,14 @@ public class UserController {
             return admins;
         }
 
-    public static void showAllpreject(){
+    public static ArrayList<Project> showAllpreject(){
     ArrayList<Project> projects = projectService.getAllProjects();
     int i=0;
         for (Project project : projects) {
-            Optional<User> user = userService.findById(project.getManagerId());
-            System.out.println(++i + " - " + project.getProjectname() + " " + user.get().getUsername());
+            User user = userService.findById(project.getManagerId());
+            System.out.println(++i + " - " + project.getProjectname() + " " + user.getUsername());
         }
-
+        return projects;
     }
 
 }

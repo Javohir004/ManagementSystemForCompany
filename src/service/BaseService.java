@@ -32,8 +32,8 @@ public abstract class BaseService <T extends BaseModel, R extends BaseRepository
         return 1;
     }
 
-    public Optional<T> findById(UUID id) {
-        return repository.findById(id);
+    public T findById(UUID id) {
+        return repository.findById(id).;
     }
 
     public abstract T mapNullFields(T original, T update);
