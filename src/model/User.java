@@ -1,5 +1,6 @@
 package model;
 
+import Enomerator.UserActivity;
 import Enomerator.UserRole;
 
 import java.util.UUID;
@@ -11,6 +12,11 @@ public class User extends BaseModel {
     private String password;
     private UserRole role;
     private UUID projectId;
+    private UserActivity userActivity;
+
+    public User(UserActivity userActivity) {
+        this.userActivity = userActivity;
+    }
 
     public User(String username, String lastname, String password, UserRole role) {
         this.username = username;
@@ -33,6 +39,15 @@ public class User extends BaseModel {
         this.password = password;
         this.role = role;
         this.projectId = projectId;
+
+    }
+
+    public UserActivity getUserActivity() {
+        return userActivity;
+    }
+
+    public void setUserActivity(UserActivity userActivity) {
+        this.userActivity = userActivity;
     }
 
     public String getUsername() {
@@ -76,7 +91,6 @@ public class User extends BaseModel {
     }
 
 
-
     @Override
     public String toString() {
         return "User{" +
@@ -84,6 +98,8 @@ public class User extends BaseModel {
                 ", lastname='" + lastname + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", projectId=" + projectId +
+                ", userActivity=" + userActivity +
                 '}';
     }
 }

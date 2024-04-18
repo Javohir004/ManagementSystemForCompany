@@ -3,21 +3,21 @@ package model;
 import java.util.UUID;
 
 public class Project extends BaseModel {
-    private String projectname;
+    private String projectName;
 
     private UUID managerId;
 
-    public Project(String projectname, UUID managerId) {
-        this.projectname = projectname;
+    public Project(String projectName, UUID managerId) {
+        this.projectName = projectName;
         this.managerId = managerId;
     }
 
-    public String getProjectname() {
-        return projectname;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProjectname(String projectname) {
-        this.projectname = projectname;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public UUID getManagerId() {
@@ -31,7 +31,7 @@ public class Project extends BaseModel {
     @Override
     public String toString() {
         return "Project{" +
-                "projectname='" + projectname + '\'' +
+                "projectName='" + projectName + '\'' +
                 ", managerId=" + managerId +
                 '}';
     }

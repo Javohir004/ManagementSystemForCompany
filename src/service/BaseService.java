@@ -21,6 +21,9 @@ public abstract class BaseService <T extends BaseModel, R extends BaseRepository
         repository.add(t);
         return 1;
     }
+    public void delete(UUID id){
+        repository.delete(id);
+    }
 
     public void delete(UUID id){
         repository.delete(id);
