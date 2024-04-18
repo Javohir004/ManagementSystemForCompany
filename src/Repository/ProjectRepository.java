@@ -11,7 +11,9 @@ public class ProjectRepository extends BaseRepository<Project>{
     public ArrayList<Project> getAllProjects(){
         ArrayList<Project> projectlist = new ArrayList<>();
         for (Project datum : data) {
+            if(datum.isActive()){
             projectlist.add(datum);
+            }
         }
         return projectlist;
     }
@@ -19,7 +21,7 @@ public class ProjectRepository extends BaseRepository<Project>{
 
     public Project findByProjectname(String projectName) {
         for (Project pro : data) {
-            if(pro.getProjectname().equals(projectName)) {
+            if(pro.getProjectname().equals(projectName) && pro.isActive()) {
                 return pro;
             }
         }

@@ -1,6 +1,7 @@
 package Controller;
 
 import Enomerator.UserRole;
+import model.Project;
 import model.User;
 
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class UserController {
         }
 
     public static void showAllpreject(){
-
+    ArrayList<Project> projects = projectService.getAllProjects();
     }
 
 }
