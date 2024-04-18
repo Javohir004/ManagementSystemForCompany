@@ -20,11 +20,11 @@ public class Project extends BaseModel {
         this.projectname = projectname;
     }
 
-    public UUID getReleteds() {
+    public UUID getManagerId() {
         return managerId;
     }
 
-    public void setReleteds(UUID managerId) {
+    public void setManagerId(UUID managerId) {
         this.managerId = managerId;
     }
 

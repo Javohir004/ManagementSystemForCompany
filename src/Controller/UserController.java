@@ -5,6 +5,7 @@ import model.Project;
 import model.User;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static Controller.Main.*;
 
@@ -98,6 +99,12 @@ public class UserController {
 
     public static void showAllpreject(){
     ArrayList<Project> projects = projectService.getAllProjects();
+    int i=0;
+        for (Project project : projects) {
+            Optional<User> user = userService.findById(project.getManagerId());
+            System.out.println(++i + " - " + project.getProjectname() + " " + user.get().getUsername());
+        }
+
     }
 
 }
