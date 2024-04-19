@@ -45,6 +45,10 @@ public class UserController {
             superAdminMenu();
         }
 
+        if(currentUser.getRole().equals(UserRole.MANAGER)){
+            managerMune();
+        }
+
 
         if(currentUser.getRole().equals(UserRole.ADMIN)){
             adminMenu();

@@ -117,6 +117,36 @@ public class Main {
 
   }
 
+  public static void managerMenu(){
+      while (true) {
+          System.out.println("1.CRUD project A\t2.Add employee\t3.Delete && Read employee\n" +
+                  "4.CRUD task\t5.Assign task\t0. Exit");
+          String command = scanStr.nextLine();
+
+          switch (command) {
+              case "1" -> {
+
+              }
+              case "2" -> {
+                  ///
+              }case "3" ->{
+
+              }case "4" ->{
+
+              }case "5" ->{
+                ////
+              }
+              case "0" -> {
+                  System.out.println("thank you for choosing us\n\n");
+                  return;
+              }
+              default -> {
+                  System.out.println("Sorry?!");
+              }
+          }
+      }
+  }
+
 
 
 
