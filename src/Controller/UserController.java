@@ -46,7 +46,7 @@ public class UserController {
         }
 
         if(currentUser.getRole().equals(UserRole.MANAGER)){
-            managerMune();
+            managerMenu();
         }
 
 
