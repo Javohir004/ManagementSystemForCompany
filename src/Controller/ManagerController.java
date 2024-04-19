@@ -232,6 +232,8 @@ public class ManagerController {
     }
 
 
+
+        /** Bu yerda shu manager ga tegishli employerlar va assign bo'lmagan tasklar chaqirilgan **/
     public static void assignTask(){
         ArrayList<Task> taskList = showTaskswithAssign();
 
@@ -245,7 +247,6 @@ public class ManagerController {
 
         Task task = taskList.get(index);
 
-        /** Bu yerda shu manager ga tegishli employerlar chaqirildi **/
 
         ArrayList<User> Ishchilar = showEmployeebyManagerId();
 
@@ -273,6 +274,7 @@ public class ManagerController {
     }
 
 
+    /** bu faqat assign bo'lmagan tasklar chaqirilgan **/
     public static ArrayList<Task>  showTaskswithAssign(){
         ArrayList<Project> projects = projectService.getProject(currentUser.getId());
         int i = 0;

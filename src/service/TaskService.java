@@ -24,6 +24,7 @@ public class TaskService extends BaseService<Task , TaskRepository>{
      return repository.showTasks(projectId);
     }
 
+    /** bu yerda faqatgina assign bo'lmagan tasklarni ko'rsatadi **/
     public ArrayList<Task> showTaskWithAssigned(UUID projectId){
         return repository.showTasksWithAssign(projectId);
     }
