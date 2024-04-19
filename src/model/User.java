@@ -10,7 +10,18 @@ public class User extends BaseModel {
 
     private String password;
     private UserRole role;
+    private UUID managerId;
     private UUID projectId;
+
+    public User(String username, String lastname, String password, UserRole role, UUID managerId, UUID projectId) {
+        this.username = username;
+        this.lastname = lastname;
+        this.password = password;
+        this.role = role;
+        this.managerId = managerId;
+        this.projectId = projectId;
+    }
+
 
     public User(String username, String lastname, String password, UserRole role) {
         this.username = username;
@@ -27,6 +38,13 @@ public class User extends BaseModel {
         this.projectId = projectId;
     }
 
+    public UUID getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(UUID managerId) {
+        this.managerId = managerId;
+    }
 
     public String getUsername() {
         return username;

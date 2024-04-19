@@ -65,4 +65,14 @@ public class UserRepository extends BaseRepository<User> {
         return employee;
     }
 
+
+    public ArrayList<User> showEmployersByManagerId(UUID managerId){
+        ArrayList<User> users = new ArrayList<>();
+        for (User datum : data) {
+            if(datum.getManagerId().equals(managerId) && datum.isActive()){
+                users.add(datum);
+            }
+        }
+        return users;
+    }
 }

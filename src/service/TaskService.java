@@ -24,5 +24,8 @@ public class TaskService extends BaseService<Task , TaskRepository>{
      return repository.showTasks(projectId);
     }
 
+    public ArrayList<Task> showTaskWithAssigned(UUID projectId){
+        return repository.showTasksWithAssign(projectId);
+    }
 
 }

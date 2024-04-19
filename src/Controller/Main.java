@@ -124,7 +124,7 @@ public class Main {
   public static void managerMenu(){
       while (true) {
           System.out.println();
-          System.out.println("1.CRUD project\t2.Employee menu\t4.CRUD task\t5.Assign task\t0. Exit");
+          System.out.println("1.CRUD project\t2.Employee menu\t3.CRUD task\t4.Assign task\t0. Exit");
           String command = scanStr.nextLine();
 
           switch (command) {
@@ -136,9 +136,7 @@ public class Main {
               }case "3" ->{
                    taskMenu();
               }case "4" ->{
-                ///
-              }case "5" ->{
-                ////
+                assignTask();
               }
               case "0" -> {
                   System.out.println("thank you for choosing us\n\n");
@@ -167,7 +165,7 @@ public class Main {
                      updateTask();
                 }
                 case "4" -> {
-                   ///
+                     deleteTask();
                 }
                 case "0" -> {
                     System.out.println("thank you for choosing us\n\n");
@@ -191,7 +189,7 @@ public class Main {
                 addEmployee();
                 }
                 case "2" -> {
-                    showEmployee();
+                    showEmployeebyManagerId();
                 }case "3" ->{
                     deleteEmployer();
                 }case "0" -> {

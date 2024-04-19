@@ -5,6 +5,7 @@ import Repository.UserRepository;
 import model.User;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class UserService extends BaseService<User, UserRepository>{
 
@@ -44,5 +45,9 @@ public class UserService extends BaseService<User, UserRepository>{
         return repository.showEmployers();
     }
 
+
+    public ArrayList<User> showEmployersByManager(UUID managerId){
+        return repository.showEmployersByManagerId(managerId);
+    }
 
 }

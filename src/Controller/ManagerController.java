@@ -16,9 +16,9 @@ public class ManagerController {
 
     public static void createProject() {
         System.out.print("Enter project name : ");
-        String command = scanStr.nextLine();
+        String prjoectNAme = scanStr.nextLine();
 
-        if (projectService.add(new Project(command, currentUser.getId())) != 1) {
+        if (projectService.add(new Project(prjoectNAme, currentUser.getId())) != 1) {
             System.out.println("This project already created !!!");
         }
 
@@ -38,6 +38,7 @@ public class ManagerController {
 
         Project project = projects.get(index);
         projectService.delete(project.getId());
+        System.out.println("This project don't live any more !!!");
 
     }
 
@@ -57,6 +58,7 @@ public class ManagerController {
         System.out.println("Enter new name : ");
         String name = scanStr.nextLine();
         projectService.update(project.getId(), new Project(name, currentUser.getId()));
+        System.out.println("Successfully changed !!!");
 
     }
 
@@ -102,16 +104,16 @@ public class ManagerController {
                 }
             }
 
-            if (userService.add(new User(name, username, password, userRole)) != 1) {
+            if (userService.add(new User(name, username, password, userRole , currentUser.getId() , null)) != 1) {
                 System.out.println("This user already created !!!");
             }
-
+            System.out.println("Employer added !!!");
         }
     }
 
 
     public static void deleteEmployer() {
-        ArrayList<User> users = showEmployee();
+        ArrayList<User> users = showEmployeebyManagerId();
 
         System.out.print("Choose the index : ");
         int index = scanNum.nextInt() - 1;
@@ -123,6 +125,7 @@ public class ManagerController {
 
         User user = users.get(index);
         userService.delete(user.getId());
+        System.out.println("Successfully deleted !!!");
     }
 
     public static ArrayList<User> showEmployee() {
@@ -153,11 +156,14 @@ public class ManagerController {
         Project project = projects.get(index);
 
         System.out.print("Enter task name : ");
-        String task = scanStr.nextLine();
+        String taskname = scanStr.nextLine();
 
-        taskService.add(new Task(task, TaskStatus.CREATED,null,project.getId()));
+        taskService.add(new Task(taskname, TaskStatus.CREATED,null,project.getId()));
+        System.out.println("Successfully created !!! ");
 
     }
+
+
 
 
 
@@ -189,9 +195,107 @@ public class ManagerController {
 
 
     public static void updateTask(){
+     ArrayList<Task> list = showTasks();
+
+        System.out.print("Choose the index : ");
+        int index = scanNum.nextInt() - 1;
+
+        if (index < 0 || index >= list.size()) {
+            System.out.println("Something went wrong !!!");
+            return ;
+        }
+
+        Task task = list.get(index);
+
+        System.out.print("Enter task name : ");
+        String taskname = scanStr.nextLine();
+
+        taskService.update(task.getId(),new Task(taskname,TaskStatus.CREATED,null,task.getProjectId()));
+        System.out.println("Successfully updated !!! ");
 
     }
 
+    public static void deleteTask(){
+        ArrayList<Task> list = showTasks();
+
+        System.out.print("Choose the index : ");
+        int index = scanNum.nextInt() - 1;
+
+        if (index < 0 || index >= list.size()) {
+            System.out.println("Something went wrong !!!");
+            return ;
+        }
+
+        Task task = list.get(index);
+        taskService.delete(task.getId());
+        System.out.println("Successfully deleted !!!");
+    }
 
 
+    public static void assignTask(){
+        ArrayList<Task> taskList = showTaskswithAssign();
+
+        System.out.print("Choose the index : ");
+        int index = scanNum.nextInt() - 1;
+
+        if (index < 0 || index >= taskList.size()) {
+            System.out.println("Something went wrong !!!");
+            return ;
+        }
+
+        Task task = taskList.get(index);
+
+        /** Bu yerda shu manager ga tegishli employerlar chaqirildi **/
+
+        ArrayList<User> Ishchilar = showEmployeebyManagerId();
+
+        System.out.print("Choose the index : ");
+        int h = scanNum.nextInt() - 1;
+
+        if (h < 0 || h >= Ishchilar.size()) {
+            System.out.println("Something went wrong !!!");
+            return ;
+        }
+
+        User user = Ishchilar.get(h);
+        task.setAssignTask(user.getId());
+        System.out.println("Finally i am  done !!!");
+    }
+
+
+    public static ArrayList<User> showEmployeebyManagerId(){
+        ArrayList<User> employee = userService.showEmployersByManager(currentUser.getId());
+        int i=0;
+        for (User user : employee) {
+            System.out.println(++i + " - " + user.getUsername() + " -- " + user.getRole());
+        }
+        return employee;
+    }
+
+
+    public static ArrayList<Task>  showTaskswithAssign(){
+        ArrayList<Project> projects = projectService.getProject(currentUser.getId());
+        int i = 0;
+        for (Project project : projects) {
+            System.out.println(++i + " - " + project.getProjectname());
+        }
+
+        System.out.print("Choose the index : ");
+        int index = scanNum.nextInt() - 1;
+
+        if (index < 0 || index >= projects.size()) {
+            System.out.println("Something went wrong !!!");
+            return null;
+        }
+
+        Project project = projects.get(index);
+
+        ArrayList<Task>tasks = taskService.showTaskWithAssigned(project.getId());
+
+        int j=0;
+        for (Task task : tasks) {
+            System.out.println(++j + " - " + task.getTaskname());
+        }
+        return tasks;
+    }
 }
