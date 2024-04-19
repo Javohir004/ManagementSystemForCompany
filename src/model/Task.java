@@ -8,14 +8,29 @@ public class Task extends BaseModel {
  private String taskname;
  private TaskStatus taskStatus;
  private UUID assignTask;
+ private UUID projectId;
 
-
+    public Task(String taskname, TaskStatus taskStatus, UUID assignTask, UUID projectId) {
+        this.taskname = taskname;
+        this.taskStatus = taskStatus;
+        this.assignTask = assignTask;
+        this.projectId = projectId;
+    }
 
     public Task(String taskname, TaskStatus taskStatus, UUID assignTask) {
         this.taskname = taskname;
         this.taskStatus = taskStatus;
         this.assignTask = assignTask;
     }
+
+    public UUID getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(UUID projectId) {
+        this.projectId = projectId;
+    }
+
     public String getTaskname() {
         return taskname;
     }

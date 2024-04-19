@@ -81,7 +81,7 @@ public class UserController {
         public static void removeAdmin(){
        ArrayList<User>userlist = showAdmin();
 
-            System.out.println("Choose the index : ");
+            System.out.print("Choose the index : ");
             int index = scanNum.nextInt()-1;
 
             if(index < 0 || index >= userlist.size()){

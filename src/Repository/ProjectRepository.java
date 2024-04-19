@@ -4,6 +4,7 @@ import model.Project;
 import model.User;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ProjectRepository extends BaseRepository<Project>{
 
@@ -26,6 +27,16 @@ public class ProjectRepository extends BaseRepository<Project>{
             }
         }
         return null;
+    }
+
+    public ArrayList<Project> getProject(UUID managerId){
+        ArrayList<Project> projects = new ArrayList<>();
+        for (Project datum : data) {
+            if(datum.getManagerId().equals(managerId) && datum.isActive()){
+                projects.add(datum);
+            }
+        }
+        return projects;
     }
 
 }

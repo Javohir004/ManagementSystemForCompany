@@ -4,6 +4,7 @@ import Repository.ProjectRepository;
 import model.Project;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ProjectService extends BaseService <Project , ProjectRepository> {
 
@@ -21,7 +22,11 @@ public class ProjectService extends BaseService <Project , ProjectRepository> {
 
 
     public ArrayList<Project> getAllProjects(){
-        ArrayList<Project> projects = repository.getAllProjects();
-        return projects;
+        return repository.getAllProjects();
+    }
+
+
+    public ArrayList<Project> getProject(UUID id){
+    return repository.getProject(id);
     }
 }

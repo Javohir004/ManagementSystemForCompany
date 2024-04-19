@@ -4,6 +4,9 @@ import Repository.TaskRepository;
 import model.Project;
 import model.Task;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class TaskService extends BaseService<Task , TaskRepository>{
 
     public TaskService(TaskRepository repository) {
@@ -15,4 +18,11 @@ public class TaskService extends BaseService<Task , TaskRepository>{
         Task taskInDb = repository.findByTaskname(task.getTaskname());
         return  taskInDb != null && taskInDb.getActive();
     }
+
+
+    public ArrayList<Task> showTask(UUID projectId){
+     return repository.showTasks(projectId);
+    }
+
+
 }

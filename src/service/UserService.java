@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class UserService extends BaseService<User, UserRepository>{
 
     public User signIn(String username, String password) {
-        User user = repository.findByUsername(username);
+        User user = repository.findByUsername(username , password);
         if(user.getPassword().equals(password)) {
             return user;
         }
@@ -23,26 +23,26 @@ public class UserService extends BaseService<User, UserRepository>{
 
     @Override
     public boolean check(User user) {
-        User userInDb = repository.findByUsername(user.getUsername());
+        User userInDb = repository.findByUsername(user.getUsername(),user.getPassword());
         return  userInDb != null && userInDb.getActive();
     }
 
 
     /** only for Super admin to get admins, and for Admin to get managers **/
     public ArrayList<User> getUsersByRole(UserRole role){
-        ArrayList<User>userlist = repository.getUsersByRole(role);
-        return userlist;
+        return repository.getUsersByRole(role);
     }
 
 
-    /**this is for manager**/
-//    public ArrayList<User> getUsersByRole(UserRole role, ){
-//        ArrayList
-//    }
+
 
     public ArrayList<User> getBlockedUser(UserRole role){
-        ArrayList<User>userlist = repository.showBlocked(role);
-        return userlist;
+        return repository.showBlocked(role);
     }
+
+    public  ArrayList<User> showEmployers(){
+        return repository.showEmployers();
+    }
+
 
 }

@@ -20,9 +20,9 @@ public class UserRepository extends BaseRepository<User> {
         return Optional.empty();
     }
 
-    public User findByUsername(String username) {
+    public User findByUsername(String username , String password) {
         for (User user : data) {
-            if (user.getUsername().equals(username)) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
             }
         }
@@ -48,6 +48,21 @@ public class UserRepository extends BaseRepository<User> {
             }
         }
         return userrole;
+    }
+
+
+    public ArrayList<User> showEmployers(){
+        ArrayList<User> employee = new ArrayList<>();
+
+        for (User datum : data) {
+            if(!datum.getRole().equals(UserRole.ADMIN) &&
+               !datum.getRole().equals(UserRole.SUPER_ADMIN) &&
+               !datum.getRole().equals(UserRole.MANAGER)  &&
+               datum.isActive()){
+                employee.add(datum);
+            }
+        }
+        return employee;
     }
 
 }

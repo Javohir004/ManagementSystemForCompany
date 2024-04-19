@@ -3,6 +3,9 @@ package Repository;
 import model.Project;
 import model.Task;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class TaskRepository  extends BaseRepository<Task>{
 
     public Task findByTaskname(String taskName) {
@@ -12,5 +15,16 @@ public class TaskRepository  extends BaseRepository<Task>{
             }
         }
         return null;
+    }
+
+
+    public ArrayList<Task> showTasks(UUID id){
+        ArrayList<Task>taskArrayList = new ArrayList<>();
+        for (Task datum : data) {
+            if(datum.getProjectId().equals(id) && datum.isActive()){
+                taskArrayList.add(datum);
+            }
+        }
+        return taskArrayList;
     }
 }
