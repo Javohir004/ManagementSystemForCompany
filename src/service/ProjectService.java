@@ -1,6 +1,6 @@
 package service;
 
-import Repository.ProjectRepository;
+import repository.ProjectRepository;
 import model.Project;
 
 import java.util.ArrayList;

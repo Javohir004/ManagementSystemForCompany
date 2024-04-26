@@ -1,7 +1,6 @@
 package service;
 
-import Repository.TaskRepository;
-import model.Project;
+import repository.TaskRepository;
 import model.Task;
 
 import java.util.ArrayList;

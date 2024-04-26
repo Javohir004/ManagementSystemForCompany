@@ -1,8 +1,7 @@
 package service;
 
-import Repository.BlockRepositroy;
+import repository.BlockRepositroy;
 import model.Block;
-import model.User;
 
 public class BlockService extends BaseService <Block , BlockRepositroy> {
     public BlockService(BlockRepositroy repository) {

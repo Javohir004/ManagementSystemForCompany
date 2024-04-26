@@ -1,7 +1,7 @@
 package service;
 
-import Enomerator.UserRole;
-import Repository.UserRepository;
+import enomerator.UserRole;
+import repository.UserRepository;
 import model.User;
 
 import java.util.ArrayList;

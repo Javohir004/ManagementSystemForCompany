@@ -1,7 +1,5 @@
-package Repository;
+package repository;
 import model.BaseModel;
-
-import model.User;
 
 import java.util.ArrayList;
 import java.util.Optional;

@@ -1,13 +1,12 @@
-package Controller;
+package controller;
 
-import Enomerator.UserRole;
+import enomerator.UserRole;
 import model.Project;
 import model.User;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
-import static Controller.Main.*;
+import static controller.Main.*;
 
 public class UserController {
 

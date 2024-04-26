@@ -1,6 +1,6 @@
 package model;
 
-import Enomerator.UserRole;
+import enomerator.UserRole;
 
 import java.util.UUID;
 

@@ -1,8 +1,6 @@
-package Repository;
+package repository;
 
 import model.Block;
-
-import java.util.Objects;
 
 public class BlockRepositroy extends BaseRepository <Block> {
 

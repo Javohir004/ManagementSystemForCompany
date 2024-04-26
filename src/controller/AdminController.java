@@ -1,12 +1,12 @@
-package Controller;
+package controller;
 
-import Enomerator.UserRole;
+import enomerator.UserRole;
 import model.Block;
 import model.User;
 
 import java.util.ArrayList;
 
-import static Controller.Main.*;
+import static controller.Main.*;
 
 public class AdminController {
 

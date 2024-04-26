@@ -1,6 +1,5 @@
-package Repository;
+package repository;
 
-import model.Project;
 import model.Task;
 
 import java.util.ArrayList;

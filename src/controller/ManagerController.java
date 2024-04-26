@@ -1,15 +1,15 @@
-package Controller;
+package controller;
 
-import Enomerator.TaskStatus;
-import Enomerator.UserRole;
+import enomerator.TaskStatus;
+import enomerator.UserRole;
 import model.Project;
 import model.Task;
 import model.User;
 
 import java.util.ArrayList;
 
-import static Controller.Main.*;
-import static Controller.UserController.showAllpreject;
+import static controller.Main.*;
+import static controller.UserController.showAllpreject;
 
 public class ManagerController {
 

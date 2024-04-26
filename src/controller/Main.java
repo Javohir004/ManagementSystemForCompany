@@ -1,10 +1,10 @@
-package Controller;
+package controller;
 
-import Enomerator.UserRole;
-import Repository.BlockRepositroy;
-import Repository.ProjectRepository;
-import Repository.TaskRepository;
-import Repository.UserRepository;
+import enomerator.UserRole;
+import repository.BlockRepositroy;
+import repository.ProjectRepository;
+import repository.TaskRepository;
+import repository.UserRepository;
 import model.User;
 import service.BlockService;
 import service.ProjectService;
@@ -13,9 +13,9 @@ import service.UserService;
 
 import java.util.Scanner;
 
-import static Controller.AdminController.*;
-import static Controller.ManagerController.*;
-import static Controller.UserController.*;
+import static controller.AdminController.*;
+import static controller.ManagerController.*;
+import static controller.UserController.*;
 
 public class Main {
 

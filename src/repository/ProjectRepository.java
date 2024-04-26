@@ -1,7 +1,6 @@
-package Repository;
+package repository;
 
 import model.Project;
-import model.User;
 
 import java.util.ArrayList;
 import java.util.UUID;

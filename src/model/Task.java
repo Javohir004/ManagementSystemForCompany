@@ -1,6 +1,6 @@
 package model;
 
-import Enomerator.TaskStatus;
+import enomerator.TaskStatus;
 
 import java.util.UUID;
 
