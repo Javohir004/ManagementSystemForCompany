@@ -16,4 +16,5 @@ public class Block extends BaseModel {
     public void setBlockId(UUID blockId) {
         this.blockId = blockId;
     }
+
 }
