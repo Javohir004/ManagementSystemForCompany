@@ -19,7 +19,7 @@ public class BlockService extends BaseService <Block , BlockRepositroy> {
     }
 
     public Integer unblock(Block block){
-        return  repository.unblockBlock(block);
+        return  repository.unblockBlocked(block);
     }
 
 

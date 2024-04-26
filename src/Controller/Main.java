@@ -93,7 +93,7 @@ public class Main {
   public static void  adminMenu(){
       while (true) {
           System.out.println();
-          System.out.println("1.Stop A\t2.Restart manager\t3.Show projects\t4.Add manager\t5.Remove manager\t0. Exit");
+          System.out.println("1.Stop manager\t2.Restart manager\t3.Show manager\t4.Add manager\t5.Remove manager\n\t6.Show projects\t0. Exit");
           String command = scanStr.nextLine();
 
           switch (command) {
@@ -103,11 +103,13 @@ public class Main {
               case "2" -> {
                    restartManager();
               }case "3" ->{
-                  showAdmin();
+                  showManager();
               }case "4" ->{
                   addManager();
               }case "5" ->{
                   removeManager();
+              }case "6" ->{
+                  showAllpreject();
               }
               case "0" -> {
                   System.out.println("thank you for choosing us\n\n");
@@ -213,7 +215,7 @@ public class Main {
                     createProject();
                 }
                 case "2" -> {
-                    showAllpreject();
+                    showProjectsByManager();
                 }
                 case "3" -> {
                     updateProject();

@@ -28,7 +28,7 @@ public class TaskRepository  extends BaseRepository<Task>{
         return taskArrayList;
     }
 
-    public ArrayList<Task> showTasksWithAssign(UUID id){
+    public ArrayList<Task> showTasksUnAssign(UUID id){
         ArrayList<Task>taskArrayList = new ArrayList<>();
         for (Task datum : data) {
             if(datum.getProjectId().equals(id) && datum.isActive() && datum.getAssignTask() != null){

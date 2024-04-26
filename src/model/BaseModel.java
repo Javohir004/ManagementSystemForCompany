@@ -2,7 +2,7 @@ package model;
 
 import java.util.UUID;
 
-public class BaseModel {
+public abstract class BaseModel {
 
     {
         this.id = UUID.randomUUID();

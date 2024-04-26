@@ -2,7 +2,10 @@ package Repository;
 
 import model.Block;
 
+import java.util.Objects;
+
 public class BlockRepositroy extends BaseRepository <Block> {
+
 
     public Integer addBlock(Block block) {
         if (check(block)) {
@@ -10,14 +13,13 @@ public class BlockRepositroy extends BaseRepository <Block> {
         }
 
         data.add(block);
-        findById(block.getBlocked()).get().setActive(false);
         block.setActive(false);
 
         return 1;
     }
 
-    public Integer unblockBlock(Block block){
-        findById(block.getBlocked()).get().setActive(true);
+    public Integer unblockBlocked(Block block){
+        block.setActive(true);
         return 1;
     }
 

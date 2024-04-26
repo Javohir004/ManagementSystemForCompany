@@ -13,7 +13,7 @@ public class AdminController {
   public static void   stopManager(){
   ArrayList<User> managerList = showManager();
 
-      System.out.println("Choose the index : ");
+      System.out.print("Choose the index : ");
       int index = scanNum.nextInt()-1;
 
       if(index < 0 || index >= managerList.size()){
@@ -22,7 +22,13 @@ public class AdminController {
       }
 
       User user = managerList.get(index);
-      blockService.block(new Block(user.getId()));
+      System.out.println(user.getId());
+      if( blockService.block( new Block(user.getId())) == 1 ){
+          user.setActive(false);
+          System.out.println(user.getUsername() + " is blocked !!!");
+      }else{
+          System.out.println("Something went wrong !!!");
+      }
 
     }
 
@@ -30,7 +36,7 @@ public class AdminController {
    public static void removeManager(){
    ArrayList<User>delete = showManager();
 
-       System.out.println("Choose the index : ");
+       System.out.print("Choose the index : ");
        int index = scanNum.nextInt()-1;
 
        if(index < 0 || index >= delete.size()){
@@ -56,9 +62,9 @@ public class AdminController {
        String password = scanStr.nextLine();
 
        if (userService.add(new User(name, username, password , UserRole.MANAGER)) == 1) {
-           System.out.println("New admin added !!!");
+           System.out.println("New manager added !!!");
        }else {
-           System.out.println("This admin already exist !!!");
+           System.out.println("This manager already exist !!!");
        }
     }
 
@@ -78,7 +84,7 @@ public class AdminController {
             System.out.println(++i + " - " + user.getUsername());
         }
 
-        System.out.println("Choose the index : ");
+        System.out.print("Choose the index : ");
         int index = scanNum.nextInt() - 1;
 
         if (index < 0 || index >= blocked.size()) {
@@ -88,7 +94,7 @@ public class AdminController {
 
         User user = blocked.get(index);
         if (blockService.unblock(new Block(user.getId())) == 1) {
-            ;
+            user.setActive(true);
             System.out.println("Succesfully restarted !!! ");
         } else {
             System.out.println("Something went wrong !!!");

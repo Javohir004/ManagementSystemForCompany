@@ -42,19 +42,21 @@ public class UserController {
         }
 
         if(currentUser.getRole().equals(UserRole.SUPER_ADMIN)){
+            System.out.println("Welcome " + currentUser.getUsername().toUpperCase());
             superAdminMenu();
         }
 
         if(currentUser.getRole().equals(UserRole.MANAGER)){
+            System.out.println("Welcome " + currentUser.getUsername().toUpperCase());
             managerMenu();
         }
 
 
         if(currentUser.getRole().equals(UserRole.ADMIN)){
+        System.out.println("Welcome " + currentUser.getUsername().toUpperCase() + "!\n");
             adminMenu();
         }
 
-        System.out.println("Welcome " + currentUser.getUsername().toUpperCase() + "!\n\n");
     }
 
 

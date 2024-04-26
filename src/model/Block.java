@@ -3,17 +3,17 @@ package model;
 import java.util.UUID;
 
 public class Block extends BaseModel {
-    private UUID blocked;
+    private UUID blockId;
 
-    public Block(UUID blocked) {
-        this.blocked = blocked;
+    public Block(UUID blockId) {
+        this.blockId = blockId;
     }
 
-    public UUID getBlocked() {
-        return blocked;
+    public UUID getBlockId() {
+        return blockId;
     }
 
-    public void setBlocked(UUID blocked) {
-        this.blocked = blocked;
+    public void setBlockId(UUID blockId) {
+        this.blockId = blockId;
     }
 }

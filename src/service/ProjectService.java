@@ -26,7 +26,7 @@ public class ProjectService extends BaseService <Project , ProjectRepository> {
     }
 
 
-    public ArrayList<Project> getProject(UUID id){
-    return repository.getProject(id);
+    public ArrayList<Project> getProjectByManagerId(UUID id){
+    return repository.getProjectByManagerID(id);
     }
 }

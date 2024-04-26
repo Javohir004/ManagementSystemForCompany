@@ -1,9 +1,11 @@
 package Repository;
 
 import Enomerator.UserRole;
+import model.Block;
 import model.User;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -51,28 +53,14 @@ public class UserRepository extends BaseRepository<User> {
     }
 
 
-    public ArrayList<User> showEmployers(){
-        ArrayList<User> employee = new ArrayList<>();
-
-        for (User datum : data) {
-            if(!datum.getRole().equals(UserRole.ADMIN) &&
-               !datum.getRole().equals(UserRole.SUPER_ADMIN) &&
-               !datum.getRole().equals(UserRole.MANAGER)  &&
-               datum.isActive()){
-                employee.add(datum);
-            }
-        }
-        return employee;
-    }
-
-
     public ArrayList<User> showEmployersByManagerId(UUID managerId){
         ArrayList<User> users = new ArrayList<>();
         for (User datum : data) {
-            if(datum.getManagerId().equals(managerId) && datum.isActive()){
+            if(Objects.equals(datum.getManagerId(), managerId) && datum.isActive()){
                 users.add(datum);
             }
         }
         return users;
     }
+
 }

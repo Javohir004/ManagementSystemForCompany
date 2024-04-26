@@ -30,14 +30,6 @@ public class User extends BaseModel {
         this.role = role;
     }
 
-    public User(String username, String lastname, String password, UserRole role, UUID projectId) {
-        this.username = username;
-        this.lastname = lastname;
-        this.password = password;
-        this.role = role;
-        this.projectId = projectId;
-    }
-
     public UUID getManagerId() {
         return managerId;
     }

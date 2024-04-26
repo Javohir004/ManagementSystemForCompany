@@ -16,9 +16,9 @@ public class ManagerController {
 
     public static void createProject() {
         System.out.print("Enter project name : ");
-        String prjoectNAme = scanStr.nextLine();
+        String prjoectName = scanStr.nextLine();
 
-        if (projectService.add(new Project(prjoectNAme, currentUser.getId())) != 1) {
+        if (projectService.add(new Project(prjoectName, currentUser.getId())) != 1) {
             System.out.println("This project already created !!!");
         }
 
@@ -73,7 +73,7 @@ public class ManagerController {
         System.out.print("Enter password: ");
         String password = scanStr.nextLine();
 
-        while (true) {
+
             System.out.println("\t\t1.DEVELOPER_BE    2.DEVELOPER_FE     3.TESTER ");
             System.out.println("\t\t4.LEADER_A          5.LEADER_B ");
 
@@ -104,11 +104,11 @@ public class ManagerController {
                 }
             }
 
-            if (userService.add(new User(name, username, password, userRole , currentUser.getId() , null)) != 1) {
+            if (userService.add(new User(name, username, password, userRole , currentUser.getId() , null)) == 1) {
+            System.out.println("Employer added !!!");
+            }else {
                 System.out.println("This user already created !!!");
             }
-            System.out.println("Employer added !!!");
-        }
     }
 
 
@@ -128,18 +128,9 @@ public class ManagerController {
         System.out.println("Successfully deleted !!!");
     }
 
-    public static ArrayList<User> showEmployee() {
-        ArrayList<User> emloyers = userService.showEmployers();
-        int i = 0;
-        for (User emloyer : emloyers) {
-            System.out.println(++i + " - " + emloyer.getUsername() + "   " + emloyer.getRole());
-        }
-        return emloyers;
-    }
-
 
     public static void createTask() {
-        ArrayList<Project> projects = projectService.getProject(currentUser.getId());
+        ArrayList<Project> projects = projectService.getProjectByManagerId(currentUser.getId());
         int i = 0;
         for (Project project : projects) {
             System.out.println(++i + " - " + project.getProjectname());
@@ -168,7 +159,7 @@ public class ManagerController {
 
 
     public static ArrayList<Task>  showTasks(){
-        ArrayList<Project> projects = projectService.getProject(currentUser.getId());
+        ArrayList<Project> projects = projectService.getProjectByManagerId(currentUser.getId());
         int i = 0;
         for (Project project : projects) {
             System.out.println(++i + " - " + project.getProjectname());
@@ -235,7 +226,7 @@ public class ManagerController {
 
         /** Bu yerda shu manager ga tegishli employerlar va assign bo'lmagan tasklar chaqirilgan **/
     public static void assignTask(){
-        ArrayList<Task> taskList = showTaskswithAssign();
+        ArrayList<Task> taskList = showProjectsByManager();
 
         System.out.print("Choose the index : ");
         int index = scanNum.nextInt() - 1;
@@ -245,6 +236,7 @@ public class ManagerController {
             return ;
         }
 
+        System.out.println("-----------------------------------------");
         Task task = taskList.get(index);
 
 
@@ -275,8 +267,8 @@ public class ManagerController {
 
 
     /** bu faqat assign bo'lmagan tasklar chaqirilgan **/
-    public static ArrayList<Task>  showTaskswithAssign(){
-        ArrayList<Project> projects = projectService.getProject(currentUser.getId());
+    public static ArrayList<Task>  showProjectsByManager(){
+        ArrayList<Project> projects = projectService.getProjectByManagerId(currentUser.getId());
         int i = 0;
         for (Project project : projects) {
             System.out.println(++i + " - " + project.getProjectname());
@@ -292,7 +284,7 @@ public class ManagerController {
 
         Project project = projects.get(index);
 
-        ArrayList<Task>tasks = taskService.showTaskWithAssigned(project.getId());
+        ArrayList<Task>tasks = taskService.showTaskUnAssigned(project.getId());
 
         int j=0;
         for (Task task : tasks) {

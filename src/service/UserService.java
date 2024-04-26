@@ -41,10 +41,6 @@ public class UserService extends BaseService<User, UserRepository>{
         return repository.showBlocked(role);
     }
 
-    public  ArrayList<User> showEmployers(){
-        return repository.showEmployers();
-    }
-
 
     public ArrayList<User> showEmployersByManager(UUID managerId){
         return repository.showEmployersByManagerId(managerId);

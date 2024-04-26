@@ -29,7 +29,7 @@ public class ProjectRepository extends BaseRepository<Project>{
         return null;
     }
 
-    public ArrayList<Project> getProject(UUID managerId){
+    public ArrayList<Project> getProjectByManagerID(UUID managerId){
         ArrayList<Project> projects = new ArrayList<>();
         for (Project datum : data) {
             if(datum.getManagerId().equals(managerId) && datum.isActive()){
